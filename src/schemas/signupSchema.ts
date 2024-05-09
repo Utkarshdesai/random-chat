@@ -1,6 +1,6 @@
 import {z} from 'zod' 
 
-const signUpSchema = z.object({
+export const signUpSchema = z.object({
     username : z.string() ,
     email : z.string().email({message:'Invalid email address'}) ,
     password : z.string()
@@ -9,4 +9,3 @@ const signUpSchema = z.object({
 
 })
 
-export default  signUpSchema ;

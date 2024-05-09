@@ -31,7 +31,7 @@ export interface user extends Document {
   password :string ,
   isverifed : boolean,
   verifycode:string,
-  verifycodeexpiry : string ,
+  verifycodeexpiry : Date ,
   isAcceptingMessages: boolean,
   messages : Message[],
   
