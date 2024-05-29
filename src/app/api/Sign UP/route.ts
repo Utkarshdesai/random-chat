@@ -3,18 +3,12 @@ import usermodel from "@/models/usermodel";
 import bcrypt from 'bcrypt'
 import { STATUS_CODES } from "http";
 import { ApiResponse } from "@/types/ApiResponse";
-import { date } from "zod"; 
 import mailsender from '../../../helper/mail'
 
 
 export async function POST (request : Request ) 
 {
-    //algo 
-   
-    //check user exist 
-    //if it verified ot not 
-    //create an account
-
+    
     try {
         await dbconnect()
 
@@ -76,6 +70,8 @@ export async function POST (request : Request )
                     isAcceptingMessages: true,
                     messages: []
                 })
+
+                console.log(newuser)
             }
 
             //send email to user 
@@ -99,9 +95,6 @@ export async function POST (request : Request )
                 })
             }
           
-
-         
-
           
         }
 
@@ -114,9 +107,7 @@ export async function POST (request : Request )
         sucess: false,
         STATUS_CODES: 404
        })
-      
-      
-     
+           
      
     }
 }

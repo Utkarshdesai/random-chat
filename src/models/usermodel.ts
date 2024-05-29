@@ -1,4 +1,5 @@
 import mongoose , {Schema ,Document } from "mongoose";
+import { number } from "zod";
 
 
 export interface Message extends Document {
@@ -23,8 +24,6 @@ const MessageSchema : Schema <Message> = new mongoose.Schema ({
    }
 })
 
-
-
 export interface user extends Document {
   username : string ,
   email : string ,
@@ -43,6 +42,7 @@ const UserSchema : Schema<user> = new mongoose.Schema ({
    username :{
     type: String ,
     required: [true , 'username is required'],
+    unique : true
    },
   
    email :{
@@ -66,7 +66,17 @@ const UserSchema : Schema<user> = new mongoose.Schema ({
    isAcceptingMessages: {
     type: Boolean,
     default: true,
-  },
+   }, 
+
+   verifycode : {
+      type : String ,
+      required : [true , 'verify code is required']
+   },
+
+   verifycodeexpiry :{
+      type : Date ,
+      required: [true, 'Verify Code Expiry is required'],
+   },
  
   messages: [MessageSchema],
 
